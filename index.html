@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Particle System</title>
+    <style>
+        body,html {
+            margin:0;
+            padding:0;
+        }
+        canvas {
+            background-color: black;
+            width: 80%;
+            height: 100%;
+            float:left;
+        }
+        h3{
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+        #sidebar{
+            width: 20%;
+            height: 100%;
+            display:block;
+            float:right;
+        }
+        .field{
+            display: block;
+        }
+        .field label{
+            margin-left: 20px;
+            margin-top: 20px;
+            display: block;
+            float:left;
+        }
+        .field input{
+            margin-right: 20px;
+            margin-top: 20px;
+            display: block;
+            float: right;
+        }
+        .field div{
+            display: block;
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            float: left;
+        }
+        .field div button{
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <canvas id="BrownianMotion"></canvas>
+    <div id="sidebar">
+        <h3>Brownian Motion Simulation</h3>
+        <div class="field">
+            <label>Particle Number</label><input />
+        </div>
+        <div class="field">
+            <label>Particle Speed</label><input />
+        </div>
+        <div class="field">
+            <label>Particle Size</label><input />
+        </div>
+        <div class="field">
+            <label>M Value</label><input />
+        </div>
+        <div class="field">
+            <div>
+                <button>Reset</button>
+            </div>
+        </div>
+        <div>
+
+
+        </div>
+
+    </div>
+</div>
+<script src="brown.js" type="application/javascript"></script>
+</body>
+</html>
