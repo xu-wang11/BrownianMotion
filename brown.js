@@ -10,16 +10,18 @@ var Setting = function(n, speed, size, color, m){
     this.M = m;
 
 }
-function BrownianMotion(setting) {
+
+function BrownianMotion(setting, hInstance) {
     var canvas = document.querySelector('canvas');
     var ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth * 0.8;
-    canvas.height = window.innerHeight;
+    canvas.width = $('#brown').width();
+    canvas.height = $('#brown').height();
     var particles = [];
-
+    var hInstanceData = {}
     var Particle = function (x, y, speed, size, color) {
         this.x = x;
         this.y = y;
+        this.value = 1;
         this.Speed = speed;
         this.Size = size;
         this.Color = color;
@@ -146,46 +148,55 @@ function BrownianMotion(setting) {
             var p = new Particle(x1, x2, setting.Speed, setting.Size, setting.ParticleColor);
             particles.push(p);
         }
+        hInstanceData = {min:0, max:5, data:particles};
     }
     
     function terminate(){
 
     }
     function iterator(){
-
-
         for(var item in particles){
             var p = particles[item];
             p.move();
         }
         clear();
         bound.draw();
+        hInstance.setData({min:0, max:0, data:[]});
         for(var item in particles){
             var p = particles[item];
             p.draw();
         }
-        queue();
-
+        var data = [];
+        for(var item in particles){
+            var p = particles[item];
+            data.push({x: p.x, y: p.y, value:1});
+        }
+        hInstance.setData({min:0, max:10, data:data});
     }
 
-    function queue() {
-        window.requestAnimationFrame(iterator);
-    }
     function clear() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
+
     function sleep(d){
         for(var t = Date.now();Date.now() - t <= d;);
     }
 
     (function(){
         init();
+        setInterval(iterator, 100);
         iterator();
 
     })()
 }
-var s = new Setting(10000, 10, 1, "rgb(0,0,255)", 10);
-BrownianMotion(s);
+var s = new Setting(1000, 10, 1, "rgb(0,0,255)", 10);
+var config = {
+    container: document.getElementById('heatmap')
+};
+var heatmapInstance = h337.create(config);
+BrownianMotion(s, heatmapInstance);
+
+
 
 
 

@@ -6,23 +6,34 @@
         body,html {
             margin:0;
             padding:0;
-        }
-        canvas {
-            background-color: black;
-            width: 80%;
+            width: 100%;
             height: 100%;
-            float:left;
         }
-        h3{
-            margin-left: 20px;
-            margin-top: 20px;
+        * {
+            box-sizing: border-box;
         }
-        #sidebar{
-            width: 20%;
+        #container{
+            width: 100%;
             height: 100%;
-            display:block;
-            float:right;
+            white-space: nowrap;
+            background: black;
         }
+
+        .workspace{
+
+            display: inline-block;
+            vertical-align: top;
+            width: 50%;
+            height: 50%;
+            white-space: normal;
+        }
+        #heatmap{
+            width: 100%;
+            height: 100%;
+        }
+
+
+        /**
         .field{
             display: block;
         }
@@ -48,37 +59,21 @@
         .field div button{
             width: 50%;
         }
+        */
+
     </style>
 </head>
 <body>
-<div>
-    <canvas id="BrownianMotion"></canvas>
-    <div id="sidebar">
-        <h3>Brownian Motion Simulation</h3>
-        <div class="field">
-            <label>Particle Number</label><input />
-        </div>
-        <div class="field">
-            <label>Particle Speed</label><input />
-        </div>
-        <div class="field">
-            <label>Particle Size</label><input />
-        </div>
-        <div class="field">
-            <label>M Value</label><input />
-        </div>
-        <div class="field">
-            <div>
-                <button>Reset</button>
-            </div>
-        </div>
-        <div>
-
-
-        </div>
-
+<div id="container">
+    <div class="workspace" id="brown">
+        <canvas id="BrownianMotion"></canvas>
+    </div>
+    <div class="workspace">
+        <div id="heatmap"></div>
     </div>
 </div>
+<script src="jquery-2.1.4.min.js" type="application/javascript"></script>
+<script src="heatmap.js" type="application/javascript"></script>
 <script src="brown.js" type="application/javascript"></script>
 </body>
 </html>
